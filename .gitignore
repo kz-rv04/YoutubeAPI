@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ignore secret API key
+secret.json
+
+# ignore data directory
+data/
