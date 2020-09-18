@@ -28,6 +28,7 @@ def get_livestreaming_details(API_KEY: str, video_id: str):
     
     return res
 
+
 # コメントデータから文字列を取得する
 def get_live_chat(API_KEY, liveChatId, nextPageToken=None):
     url = "https://www.googleapis.com/youtube/v3/liveChat/messages"
@@ -92,7 +93,7 @@ def get_livechat_all(API_KEY, savepath, video_id, interval=60):
     return
    
 # 一定時間間隔で同時接続数を取得します
-def get_concurrent_viewers(API_KEY, savepath, video_id, interval=60):
+def get_timeseries_concurrent_viewers(API_KEY, savepath, video_id, interval=60):
     # 保存先のファイルを初期化
     path = os.path.join(savepath, video_id+'.tsv')
     print('save path', savepath)
@@ -123,6 +124,6 @@ if __name__ == "__main__":
         video_id = args[1]
     API_KEY = get_api_key()
     
-    get_concurrent_viewers(API_KEY, savepath='../data/concurrent_viewers/', video_id=video_id, interval=60)
+    get_timeseries_concurrent_viewers(API_KEY, savepath='../data/concurrent_viewers/', video_id=video_id, interval=60)
 
     get_livechat_all(API_KEY, savepath='../data/comments/', video_id=video_id, interval=60)
